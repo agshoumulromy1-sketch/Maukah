@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mau Jadi Pacarku?</title>
+
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      overflow: hidden;
+    }
+
+    .box {
+      text-align: center;
+      background: white;
+      padding: 35px;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      width: 80%;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #ff4f81;
+    }
+
+    p {
+      color: #555;
+      font-size: 18px;
+    }
+
+    button {
+      border: none;
+      padding: 13px 25px;
+      border-radius: 12px;
+      font-size: 17px;
+      cursor: pointer;
+      margin: 10px;
+    }
+
+    #yes {
+      background: #ff4f81;
+      color: white;
+    }
+
+    #no {
+      background: #ddd;
+      color: #333;
+      position: absolute;
+    }
+
+    #result {
+      display: none;
+      color: #ff4f81;
+      font-size: 24px;
+      font-weight: bold;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="box">
+    <h1>💗 Hai kamu!</h1>
+
+    <p>
+      Aku mau bertanya sesuatu...
+      <br><br>
+      Mau jadi pacarku? 🥰
+    </p>
+
+    <button id="yes" onclick="jawabIya()">IYA 💕</button>
+    <button id="no">TIDAK 😝</button>
+
+    <div id="result">
+      Yey! 💖🥰
+      <br>
+      Mulai sekarang kita bersama!
+    </div>
+  </div>
+
+  <script>
+    const noButton = document.getElementById("no");
+
+    function pindahTombol() {
+      const maxX = window.innerWidth - noButton.offsetWidth;
+      const maxY = window.innerHeight - noButton.offsetHeight;
+
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+
+      noButton.style.left = x + "px";
+      noButton.style.top = y + "px";
+    }
+
+    // Saat disentuh/diklik, tombol "Tidak" pindah
+    noButton.addEventListener("mouseenter", pindahTombol);
+    noButton.addEventListener("touchstart", function(e) {
+      e.preventDefault();
+      pindahTombol();
+    });
+
+    function jawabIya() {
+      document.getElementById("result").style.display = "block";
+      document.getElementById("yes").style.display = "none";
+      noButton.style.display = "none";
+    }
+  </script>
+
+</body>
+</html>
